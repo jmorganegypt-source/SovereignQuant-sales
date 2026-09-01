@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - name: Force Node 20
+        run: echo "ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true" >> $GITHUB_ENV
       - name: Clear npm cache
         run: npm cache clean --force
       - name: Install and build
@@ -31,7 +33,7 @@ jobs:
           REACT_APP_BACKEND_URL: "https://sovereignquant.com.au"
           PUBLIC_URL: "."
         run: |
-          npm install --legacy-peer-deps --no-optional
+          npm install --legacy-peer-deps --force
           npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
