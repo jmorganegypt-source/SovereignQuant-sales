@@ -2,9 +2,9 @@ import { useMemo, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Canvas, useFrame } from "@react-three/fiber";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
-
 const EASE = [0.76, 0, 0.24, 1];
+const PACK = "https://buy.stripe.com/9B64gz4p8cOs7y02cYes004";
+const SHEET = "https://buy.stripe.com/cNibJ108S6q4aKc9Fqes002";
 
 const MaskedLine = ({ children, delay }) => (
   <span className="block overflow-hidden">
@@ -95,17 +95,17 @@ export const Hero = () => {
           className="text-xs uppercase tracking-[0.3em] text-[#F59E0B] font-bold mb-8"
           data-testid="hero-overline"
         >
-          Multi-Agent Quantitative Workstation — v1.3 Core
+          Research reports from your own CSV — live Stripe
         </motion.p>
 
         <h1
           className="font-display text-5xl md:text-7xl lg:text-[8vw] leading-[0.85] tracking-tighter uppercase font-black"
           data-testid="hero-headline"
         >
-          <MaskedLine delay={0.5}>Sovereign.</MaskedLine>
-          <MaskedLine delay={0.65}>Quant.</MaskedLine>
+          <MaskedLine delay={0.5}>Your file.</MaskedLine>
+          <MaskedLine delay={0.65}>Walk-forward.</MaskedLine>
           <MaskedLine delay={0.8}>
-            <span className="text-outline">Offline.</span>
+            <span className="text-outline">Paid.</span>
           </MaskedLine>
         </h1>
 
@@ -116,9 +116,9 @@ export const Hero = () => {
           className="mt-10 max-w-xl text-base md:text-lg leading-relaxed text-zinc-400"
           data-testid="hero-subcopy"
         >
-          A strategy research and risk-control workstation that runs on your
-          machine. Plainly: it never holds your money, never places trades for
-          you, and needs no broker account, no API keys, no cloud.
+          Three robustness reports from three of your CSVs for A$799. One report
+          for A$199. Research only. No custody. No live orders. No free zip that
+          nobody paid for.
         </motion.p>
 
         <motion.div
@@ -128,11 +128,18 @@ export const Hero = () => {
           className="mt-12 flex flex-wrap items-center gap-4"
         >
           <a
-            href={`${API}/download/community`}
+            href={PACK}
             className="bg-white text-black font-bold uppercase tracking-wider px-8 py-4 hover:bg-zinc-200 active:scale-95 transition-[background-color,transform] duration-200"
             data-testid="hero-download-button"
           >
-            Download Free — No Card
+            Buy pack — A$799
+          </a>
+          <a
+            href={SHEET}
+            className="border border-[#F59E0B]/60 text-[#F59E0B] font-bold uppercase tracking-wider px-8 py-4 hover:bg-[#F59E0B]/10 active:scale-95 transition-[background-color,transform] duration-200"
+            data-testid="hero-acquire-button"
+          >
+            One tearsheet — A$199
           </a>
           <button
             onClick={() =>
@@ -140,21 +147,10 @@ export const Hero = () => {
                 ? window.__lenis.scrollTo("#pricing", { offset: -72 })
                 : document.querySelector("#pricing")?.scrollIntoView({ behavior: "smooth" })
             }
-            className="border border-[#F59E0B]/60 text-[#F59E0B] font-bold uppercase tracking-wider px-8 py-4 hover:bg-[#F59E0B]/10 active:scale-95 transition-[background-color,transform] duration-200"
-            data-testid="hero-acquire-button"
-          >
-            Acquire Licence
-          </button>
-          <button
-            onClick={() =>
-              window.__lenis
-                ? window.__lenis.scrollTo("#manifesto", { offset: -72 })
-                : document.querySelector("#manifesto")?.scrollIntoView({ behavior: "smooth" })
-            }
             className="text-zinc-500 font-bold uppercase tracking-wider px-6 py-4 hover:text-white active:scale-95 transition-[color,transform] duration-200"
             data-testid="hero-manifesto-button"
           >
-            Read the Manifesto →
+            All prices →
           </button>
         </motion.div>
       </motion.div>
@@ -167,10 +163,10 @@ export const Hero = () => {
         data-testid="hero-status-bar"
       >
         <span>
-          SYS <span className="text-[#10B981]">ACTIVE</span>
+          STRIPE <span className="text-[#10B981]">LIVE</span>
         </span>
-        <span className="hidden md:inline">Ed25519 // Offline Licensing</span>
-        <span className="tabular">LAT 40.7128 — LON 74.0060</span>
+        <span className="hidden md:inline">No custody // No live orders</span>
+        <span className="tabular">A$799 pack · A$199 sheet</span>
       </motion.div>
     </section>
   );
